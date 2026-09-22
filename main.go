@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"net/http"
 )
 
@@ -19,10 +20,13 @@ func main() {
 
 	mux.HandleFunc("/{$}", homeHandler)
 
+	log.Println("Starting Server on Port:4000")
+	log.Fatal(http.ListenAndServe(":4000",mux))
+
 }
 
 func homeHandler(w http.ResponseWriter, r *http.Request) {
-	for _,val:=range Members{
-		fmt.Fprintf(w,"%s: %d",val.Name,val.Points)
+	for _, val := range Members {
+		fmt.Fprintf(w, "%s: %d", val.Name, val.Points)
 	}
 }
