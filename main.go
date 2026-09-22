@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"net/http"
 )
 
@@ -21,5 +22,7 @@ func main() {
 }
 
 func homeHandler(w http.ResponseWriter, r *http.Request) {
-
+	for _,val:=range Members{
+		fmt.Fprintf(w,"%s: %d",val.Name,val.Points)
+	}
 }
