@@ -1,12 +1,12 @@
 package main
 
-import ("time"
-"net/http"
+import (
+	"net/http"
 )
 
-type Data struct{
-	Name string
-	Points int
+type Data struct {
+	Name        string
+	Points      int
 	LastUpdated string
 }
 
@@ -14,15 +14,12 @@ var Members = make(map[int]Data)
 
 func main() {
 
-	mux:=http.NewServeMux()
+	mux := http.NewServeMux()
 
-	mux.HandleFunc("/{$}",homeHandler)
+	mux.HandleFunc("/{$}", homeHandler)
 
-
-	
 }
 
-func homeHandler(w http.ResponseWriter, r *http.Request){
+func homeHandler(w http.ResponseWriter, r *http.Request) {
 
-	
 }
