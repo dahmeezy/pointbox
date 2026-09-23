@@ -25,6 +25,7 @@ func main() {
 	mux.HandleFunc("GET /{$}", homeHandler)
 	mux.HandleFunc("POST /add/{ID}", addMember)
 	mux.HandleFunc("POST /delete/{ID}", deleteMember)
+	mux.HandleFunc("POST /points/add/1", addPoint)
 
 	log.Println("Starting Server on Port:4040 http://localhost:4040")
 	log.Fatal(http.ListenAndServe(":4040", mux))
@@ -54,4 +55,8 @@ func addMember(w http.ResponseWriter, r *http.Request) {
 func deleteMember(w http.ResponseWriter, r *http.Request) {
 	i,_ := strconv.Atoi(r.PathValue("ID"))
 	delete(members, i)
+}
+
+func addPoint(w http.ResponseWriter, r *http.Request){
+
 }
