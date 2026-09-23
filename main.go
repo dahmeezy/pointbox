@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"strconv"
 	"time"
 )
 
@@ -39,16 +40,18 @@ func homeHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func addMember(w http.ResponseWriter, r *http.Request) {
-	now :=string(time.Now().Format("02-01-2006 03:04PM"))
+	now := string(time.Now().Format("02-01-2006 03:04PM"))
 	name := r.PathValue("ID")
 	members[id] = Member{
 
-		Name:   name,
-		Points: 1500,
+		Name:        name,
+		Points:      1500,
 		LastUpdated: now,
-
 	}
 	id++
 }
 
-func deleteMember(w http.ResponseWriter, r *http.)
+func deleteMember(w http.ResponseWriter, r *http.Request) {
+	i,_ := strconv.Atoi(r.PathValue("ID"))
+	delete(members, i)
+}
