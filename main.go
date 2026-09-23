@@ -6,13 +6,13 @@ import (
 	"net/http"
 )
 
-type Data struct {
+type Member struct {
 	Name        string
 	Points      int
 	LastUpdated string
 }
 
-var Members = make(map[int]Data)
+var members = make(map[int]Member)
 
 var id int
 
@@ -29,12 +29,12 @@ func main() {
 
 func homeHandler(w http.ResponseWriter, r *http.Request) {
 
-	Members[id] = Data{
+	members[id] = Member{
 		Name:   "Zainab",
 		Points: 1500,
 	}
 	id++
-	for _, val := range Members {
+	for _, val := range members {
 		fmt.Fprintf(w, "%s: %d", val.Name, val.Points)
 	}
 }
