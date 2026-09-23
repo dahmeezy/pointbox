@@ -23,6 +23,7 @@ func main() {
 
 	mux.HandleFunc("GET /{$}", homeHandler)
 	mux.HandleFunc("POST /add/{ID}", addMember)
+	mux.HandleFunc("POST /delete/{ID}", deleteMember)
 
 	log.Println("Starting Server on Port:4040 http://localhost:4040")
 	log.Fatal(http.ListenAndServe(":4040", mux))
@@ -49,3 +50,5 @@ func addMember(w http.ResponseWriter, r *http.Request) {
 	}
 	id++
 }
+
+func deleteMember(w http.ResponseWriter, r *http.)
