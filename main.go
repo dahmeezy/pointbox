@@ -40,6 +40,8 @@ func homeHandler(w http.ResponseWriter, r *http.Request) {
 
 }
 
+
+
 func addMember(w http.ResponseWriter, r *http.Request) {
 	now := string(time.Now().Format("02-01-2006 03:04PM"))
 	name := r.PathValue("ID")
@@ -64,4 +66,8 @@ func addPoint(w http.ResponseWriter, r *http.Request){
 	mem.LastUpdated=string(time.Now().Format("02-01-2006 03:04PM"))
 	members[i]=mem
 
+}
+
+func deletePoint(w http.ResponseWriter, r *http.Request){
+	
 }
